@@ -71,17 +71,17 @@ namespace compilador.Transversal
             return Tipo;
         }
 
-        public override string ToString()
+        public string Mostrar()
         {
             StringBuilder Retorno = new StringBuilder();
             string SaltoLinea = "\n";
 
             Retorno.Append("Tipo componente: ").Append(ObtenerTipo()).Append(SaltoLinea);
-            Retorno.Append("Categoría: ").Append(ObtenerCategoria()).Append(SaltoLinea);
-            Retorno.Append("Lexema: ").Append(ObtenerLexema()).Append(SaltoLinea);
-            Retorno.Append("Número línea: ").Append(ObtenerNumeroLinea()).Append(SaltoLinea);
-            Retorno.Append("Posición inicial línea: ").Append(ObtenerPosicionInicial()).Append(SaltoLinea);
-            Retorno.Append("Posición final línea: ").Append(ObtenerPosicionFinal()).Append(SaltoLinea);
+            Retorno.Append(" Categoría: ").Append(ObtenerCategoria()).Append(SaltoLinea);
+            Retorno.Append(" Lexema: ").Append(ObtenerLexema()).Append(SaltoLinea);
+            Retorno.Append(" Número línea: ").Append(ObtenerNumeroLinea()).Append(SaltoLinea);
+            Retorno.Append(" Posición inicial línea: ").Append(ObtenerPosicionInicial()).Append(SaltoLinea);
+            Retorno.Append(" Posición final línea: ").Append(ObtenerPosicionFinal()).AppendLine().AppendLine();
 
             return Retorno.ToString();
         }

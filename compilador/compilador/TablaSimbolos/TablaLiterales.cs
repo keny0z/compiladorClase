@@ -53,7 +53,7 @@ namespace compilador.TablaSimbolos
             {
                 Componentes.AddRange(Lista);
             }
-            return Componentes;
+            return Tabla.Values.SelectMany(componente => componente).ToList();
         }
     }
 }

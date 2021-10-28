@@ -46,10 +46,9 @@ namespace compilador
             // 
             this.lblIngresoInfo.AutoSize = true;
             this.lblIngresoInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIngresoInfo.Location = new System.Drawing.Point(49, 21);
-            this.lblIngresoInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIngresoInfo.Location = new System.Drawing.Point(65, 26);
             this.lblIngresoInfo.Name = "lblIngresoInfo";
-            this.lblIngresoInfo.Size = new System.Drawing.Size(262, 22);
+            this.lblIngresoInfo.Size = new System.Drawing.Size(316, 26);
             this.lblIngresoInfo.TabIndex = 0;
             this.lblIngresoInfo.Text = "Tipo de Ingreso de información:";
             this.lblIngresoInfo.Click += new System.EventHandler(this.label1_Click);
@@ -58,10 +57,10 @@ namespace compilador
             // 
             this.cbArchivo.AutoSize = true;
             this.cbArchivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbArchivo.Location = new System.Drawing.Point(331, 21);
-            this.cbArchivo.Margin = new System.Windows.Forms.Padding(2);
+            this.cbArchivo.Location = new System.Drawing.Point(441, 26);
+            this.cbArchivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbArchivo.Name = "cbArchivo";
-            this.cbArchivo.Size = new System.Drawing.Size(89, 26);
+            this.cbArchivo.Size = new System.Drawing.Size(107, 30);
             this.cbArchivo.TabIndex = 1;
             this.cbArchivo.Text = "Archivo";
             this.cbArchivo.UseVisualStyleBackColor = true;
@@ -71,10 +70,10 @@ namespace compilador
             // 
             this.cbEditor.AutoSize = true;
             this.cbEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEditor.Location = new System.Drawing.Point(433, 21);
-            this.cbEditor.Margin = new System.Windows.Forms.Padding(2);
+            this.cbEditor.Location = new System.Drawing.Point(577, 26);
+            this.cbEditor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbEditor.Name = "cbEditor";
-            this.cbEditor.Size = new System.Drawing.Size(145, 26);
+            this.cbEditor.Size = new System.Drawing.Size(174, 30);
             this.cbEditor.TabIndex = 2;
             this.cbEditor.Text = "Editor de texto";
             this.cbEditor.UseVisualStyleBackColor = true;
@@ -83,10 +82,10 @@ namespace compilador
             // btnProcesar
             // 
             this.btnProcesar.Enabled = false;
-            this.btnProcesar.Location = new System.Drawing.Point(295, 269);
-            this.btnProcesar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnProcesar.Location = new System.Drawing.Point(393, 331);
+            this.btnProcesar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnProcesar.Name = "btnProcesar";
-            this.btnProcesar.Size = new System.Drawing.Size(80, 24);
+            this.btnProcesar.Size = new System.Drawing.Size(107, 30);
             this.btnProcesar.TabIndex = 3;
             this.btnProcesar.Text = "Procesar";
             this.btnProcesar.UseVisualStyleBackColor = true;
@@ -100,10 +99,9 @@ namespace compilador
             // 
             this.lblRutaArchivo.AutoSize = true;
             this.lblRutaArchivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRutaArchivo.Location = new System.Drawing.Point(134, 101);
-            this.lblRutaArchivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRutaArchivo.Location = new System.Drawing.Point(179, 124);
             this.lblRutaArchivo.Name = "lblRutaArchivo";
-            this.lblRutaArchivo.Size = new System.Drawing.Size(48, 22);
+            this.lblRutaArchivo.Size = new System.Drawing.Size(58, 26);
             this.lblRutaArchivo.TabIndex = 4;
             this.lblRutaArchivo.Text = "Ruta";
             this.lblRutaArchivo.Visible = false;
@@ -113,10 +111,9 @@ namespace compilador
             // 
             this.lblTextoRuta.AutoSize = true;
             this.lblTextoRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTextoRuta.Location = new System.Drawing.Point(72, 101);
-            this.lblTextoRuta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTextoRuta.Location = new System.Drawing.Point(96, 124);
             this.lblTextoRuta.Name = "lblTextoRuta";
-            this.lblTextoRuta.Size = new System.Drawing.Size(58, 22);
+            this.lblTextoRuta.Size = new System.Drawing.Size(70, 26);
             this.lblTextoRuta.TabIndex = 5;
             this.lblTextoRuta.Text = "Ruta: ";
             this.lblTextoRuta.Click += new System.EventHandler(this.lblRuta_Click);
@@ -126,12 +123,13 @@ namespace compilador
             this.txtbProcesado.BackColor = System.Drawing.Color.Black;
             this.txtbProcesado.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbProcesado.ForeColor = System.Drawing.Color.White;
-            this.txtbProcesado.Location = new System.Drawing.Point(30, 310);
+            this.txtbProcesado.Location = new System.Drawing.Point(40, 382);
+            this.txtbProcesado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbProcesado.Multiline = true;
             this.txtbProcesado.Name = "txtbProcesado";
             this.txtbProcesado.ReadOnly = true;
             this.txtbProcesado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtbProcesado.Size = new System.Drawing.Size(610, 155);
+            this.txtbProcesado.Size = new System.Drawing.Size(812, 190);
             this.txtbProcesado.TabIndex = 6;
             this.txtbProcesado.TextChanged += new System.EventHandler(this.txtbProcesado_TextChanged);
             // 
@@ -140,11 +138,12 @@ namespace compilador
             this.txtbEditor.BackColor = System.Drawing.Color.Black;
             this.txtbEditor.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbEditor.ForeColor = System.Drawing.Color.White;
-            this.txtbEditor.Location = new System.Drawing.Point(30, 48);
+            this.txtbEditor.Location = new System.Drawing.Point(40, 59);
+            this.txtbEditor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbEditor.Multiline = true;
             this.txtbEditor.Name = "txtbEditor";
             this.txtbEditor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtbEditor.Size = new System.Drawing.Size(610, 204);
+            this.txtbEditor.Size = new System.Drawing.Size(812, 250);
             this.txtbEditor.TabIndex = 7;
             this.txtbEditor.Visible = false;
             this.txtbEditor.TextChanged += new System.EventHandler(this.txtbEditor_TextChanged);
@@ -154,32 +153,33 @@ namespace compilador
             this.txtAnaLex.BackColor = System.Drawing.Color.Black;
             this.txtAnaLex.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnaLex.ForeColor = System.Drawing.Color.White;
-            this.txtAnaLex.Location = new System.Drawing.Point(646, 48);
+            this.txtAnaLex.Location = new System.Drawing.Point(861, 59);
+            this.txtAnaLex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAnaLex.Multiline = true;
             this.txtAnaLex.Name = "txtAnaLex";
             this.txtAnaLex.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAnaLex.Size = new System.Drawing.Size(392, 417);
+            this.txtAnaLex.Size = new System.Drawing.Size(673, 512);
             this.txtAnaLex.TabIndex = 9;
             this.txtAnaLex.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtbLineas
             // 
             this.txtbLineas.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.txtbLineas.Location = new System.Drawing.Point(11, 343);
-            this.txtbLineas.Margin = new System.Windows.Forms.Padding(2);
+            this.txtbLineas.Location = new System.Drawing.Point(12, 382);
+            this.txtbLineas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtbLineas.Multiline = true;
             this.txtbLineas.Name = "txtbLineas";
             this.txtbLineas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtbLineas.Size = new System.Drawing.Size(10, 12);
+            this.txtbLineas.Size = new System.Drawing.Size(10, 10);
             this.txtbLineas.TabIndex = 8;
             this.txtbLineas.Visible = false;
             this.txtbLineas.TextChanged += new System.EventHandler(this.txtbLineas_TextChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 488);
+            this.ClientSize = new System.Drawing.Size(1560, 601);
             this.Controls.Add(this.txtAnaLex);
             this.Controls.Add(this.txtbLineas);
             this.Controls.Add(this.txtbEditor);
@@ -190,7 +190,7 @@ namespace compilador
             this.Controls.Add(this.cbEditor);
             this.Controls.Add(this.cbArchivo);
             this.Controls.Add(this.lblIngresoInfo);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

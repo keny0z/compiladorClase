@@ -29,7 +29,7 @@ namespace compilador.TablaSimbolos
         }
         private void ValidarSiComponenteEsPalabraReservada(ComponenteLexico Componente)
         {
-            if(Componente != null && TablaReservadas.ContainsKey(Componente.ObtenerLexema()){
+            if(Componente != null && TablaReservadas.ContainsKey(Componente.ObtenerLexema())){
                 ComponenteLexico PalabraReservada = TablaReservadas[Componente.ObtenerLexema()];
                 Componente = ComponenteLexico.Crear(PalabraReservada.ObtenerLexema(), PalabraReservada.ObtenerCategoria(), Componente.ObtenerNumeroLinea(), Componente.ObtenerPosicionInicial(), Componente.ObtenerPosicionFinal(), Tipo.PALABRA_RESERVADA);
             }

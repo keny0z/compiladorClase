@@ -60,5 +60,21 @@ namespace compilador.ManejadorErrores
         {
             return Tipo;
         }
+
+        public string Mostrar()
+        {
+            StringBuilder Retorno = new StringBuilder();
+            string SaltoLinea = "\n";
+
+            Retorno.Append("Tipo error: ").Append(ObtenerTipo()).Append(SaltoLinea);
+            Retorno.Append(" Falla: ").Append(ObtenerFalla()).Append(SaltoLinea);
+            Retorno.Append(" Causa: ").Append(ObtenerCausa()).Append(SaltoLinea);
+            Retorno.Append(" Solución: ").Append(ObtenerSolucion()).Append(SaltoLinea);
+            Retorno.Append(" Número línea: ").Append(ObtenerNumeroLinea()).Append(SaltoLinea);
+            Retorno.Append(" Posición inicial línea: ").Append(ObtenerPosicionInicial()).Append(SaltoLinea);
+            Retorno.Append(" Posición final línea: ").Append(ObtenerPosicionFinal()).AppendLine().AppendLine();
+
+            return Retorno.ToString();
+        }
     }
 }

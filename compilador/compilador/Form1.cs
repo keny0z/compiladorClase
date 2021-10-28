@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using compilador.TablaSimbolos;
 
 namespace compilador
 {
@@ -78,14 +79,47 @@ namespace compilador
                 }
                 AnalizadorLexico AnaLex = new AnalizadorLexico();
                 ComponenteLexico Componente = AnaLex.DevolverComponenteLexico();
-                String Lexema2 = AnaLex.DevolverResultado();
+
+
+                //List<ComponenteLexico> ComponentesSimbolos = new List<ComponenteLexico>();
+                
+                String LexemaTipoAux = "";
+                String LexemaTipo = "";
+                //Tabla tabla = Tabla.ObtenerInstancia();
+
+
+                
+
+
                 while (!Categoria.FIN_ARCHIVO.Equals(Componente.ObtenerCategoria()))
                 {
-                    MessageBox.Show(Componente.ToString());
                     Componente = AnaLex.DevolverComponenteLexico();
-                    Lexema2 = AnaLex.DevolverResultado();
-                    txtAnaLex.Text = Lexema2;
+                    //List<ComponenteLexico> ComponentesLexAux = Tabla.ObtenerInstancia().ObtenerComponentes(Tipo.LITERAL);
+                    
+
                 }
+                List<ComponenteLexico> ComponentesTipoLiteral = Tabla.ObtenerInstancia().ObtenerComponentes(Tipo.LITERAL);
+                foreach (ComponenteLexico componenteSimbolo in ComponentesTipoLiteral)
+                {
+                    MessageBox.Show(componenteSimbolo.Mostrar());
+                    LexemaTipo = componenteSimbolo.Mostrar();
+                    LexemaTipoAux = LexemaTipoAux + LexemaTipo;
+                    
+
+                }
+
+                /*
+                  while (!Categoria.FIN_ARCHIVO.Equals(Componente.ObtenerCategoria()))
+                  {
+
+                      MessageBox.Show(Componente.ToString());
+                      Componente = AnaLex.DevolverComponenteLexico();
+                      Lexema2 = AnaLex.DevolverResultado();
+
+                  }
+                */
+
+                txtAnaLex.Text = LexemaTipoAux;
                 txtbProcesado.Text = texto;
 
                 int numeroLineas = txtbEditor.Lines.Count();
