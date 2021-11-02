@@ -15,6 +15,8 @@ namespace compilador.AnalisisSintactico
         private AnalizadorLexico AnaLex = new AnalizadorLexico();
         private ComponenteLexico Componente;
         private StringBuilder Traza;
+        private Stack<double> Pila = new Stack<double>();
+
         public void Analizar(bool Depurar)
         {
             Avanzar();
@@ -31,7 +33,16 @@ namespace compilador.AnalisisSintactico
             }
             else if (Categoria.FIN_ARCHIVO.Equals(Componente.ObtenerCategoria()))
             {
-                MessageBox.Show("La compilacion ha finalizado exitosamente...");
+                if(Pila.Count == 1)
+                {
+                    MessageBox.Show("La compilacion ha finalizado exitosamente...");
+                    MessageBox.Show("Resultado: "+ Pila.Pop());
+                }
+                else
+                {
+                    MessageBox.Show("Aunque la compilacion ha finalizado exitosamente, faltaron componentes por evaluar.");
+                }
+               
             }
             else
             {
@@ -84,6 +95,19 @@ namespace compilador.AnalisisSintactico
             Traza.Append("\n");
 
         }
+        private void FormarOperacion(int Nivel, String operacion)
+        {
+            Traza.Append("-");
+            for (int Contador = 1; Contador <= (Nivel + 1) * 5; Contador++)
+            {
+                Traza.Append("-");
+            }
+
+            Traza.Append("Operando: ").Append(operacion).Append("\n");
+            
+
+        }
+        //<Expresion> -> <Termino><ExpresionPrima>
         private void Expresion(int nivel)
         {
             FormarEntrada(nivel, "<Expresion>");
@@ -91,6 +115,7 @@ namespace compilador.AnalisisSintactico
             ExpresionPrima(nivel + 1);
             FormarSalida(nivel, "<Expresion>");
         }
+        //<ExpresionPrima> -> +<Expresion> {PUSH({POP-2}+{POP-1})}| -<Expresion>{PUSH({POP-2}-{POP-1})} | Epsilon
         private void ExpresionPrima(int nivel)
         {
             FormarEntrada(nivel, "<ExpresionPrima>");
@@ -99,15 +124,31 @@ namespace compilador.AnalisisSintactico
                 Avanzar();
                 Expresion(nivel+1);
 
+                if (!GestorErrores.ObtenerInstancia().HayErrores())
+                {
+                    Double Derecho = Pila.Pop();
+                    Double Izquierdo = Pila.Pop();
+                    Pila.Push(Izquierdo + Derecho);
+                    FormarOperacion(nivel, Izquierdo + " + " + Derecho);
+                }
 
             }
             else if (Categoria.RESTA.Equals(Componente.ObtenerCategoria()))
             {
                 Avanzar();
                 Expresion(nivel+1);
+
+                if (!GestorErrores.ObtenerInstancia().HayErrores())
+                {
+                    Double Derecho = Pila.Pop();
+                    Double Izquierdo = Pila.Pop();
+                    Pila.Push(Izquierdo - Derecho);
+                    FormarOperacion(nivel, Izquierdo + " - " + Derecho);
+                }
             }
             FormarSalida(nivel, "<ExpresionPrima>");
         }
+        //<Termino> -> <Factor><TerminoPrima>
         private void Termino(int nivel)
         {
             FormarEntrada(nivel, "<Termino>");
@@ -115,6 +156,7 @@ namespace compilador.AnalisisSintactico
             TerminoPrima(nivel+1);
             FormarSalida(nivel, "<Termino>");
         }
+        //<TerminoPrima> -> *<Termino>{PUSH({POP-2}*{POP-1})} | /<Termino>{PUSH({POP-2}/{POP-1})} | Epsilon
         private void TerminoPrima(int nivel)
         {
             FormarEntrada(nivel, "<TerminoPrima>");
@@ -122,6 +164,14 @@ namespace compilador.AnalisisSintactico
             {
                 Avanzar();
                 Termino(nivel+1);
+
+                if (!GestorErrores.ObtenerInstancia().HayErrores())
+                {
+                    Double Derecho = Pila.Pop();
+                    Double Izquierdo = Pila.Pop();
+                    Pila.Push(Izquierdo * Derecho);
+                    FormarOperacion(nivel, Izquierdo + " * " + Derecho);
+                }
                    
 
             } 
@@ -129,18 +179,43 @@ namespace compilador.AnalisisSintactico
             {
                 Avanzar();
                 Termino(nivel+1);
+
+                if (!GestorErrores.ObtenerInstancia().HayErrores())
+                {
+                    Double Derecho = Pila.Pop();
+                    Double Izquierdo = Pila.Pop();
+                    FormarOperacion(nivel, Izquierdo + " / " + Derecho);
+
+                    if (Derecho == 0)
+                    {
+                        string Falla = "Operacion no valida: Division por cero";
+                        string Causa = "El denominador es cero";
+                        string Solucion = "Asegúrese de que el denominador sea diferente de cero";
+
+
+                        Error Error = ManejadorErrores.Error.Crear(Componente.ObtenerNumeroLinea(), Componente.ObtenerPosicionInicial(), Componente.ObtenerPosicionFinal(), Falla, Causa, Solucion, ManejadorErrores.TipoError.SEMANTICO);
+                        GestorErrores.ObtenerInstancia().Agregar(Error);
+                    }
+                    else
+                    {
+                        Pila.Push(Izquierdo / Derecho);
+                    }
+                }
             }
             FormarSalida(nivel, "<TerminoPrima>");
         }
+        //<Factor> -> NUMERO ENTERO{PUSH} | NUMERO DECIMAL{PUSH} | (<Expresion>)
         private void Factor(int nivel)
         {
             FormarEntrada(nivel, "<Factor>");
             if (Categoria.NUMERO_ENTERO.Equals(Componente.ObtenerCategoria()))
             {
+                Pila.Push(Convert.ToInt32(Componente.ObtenerLexema()));
                 Avanzar();
             }
             else if (Categoria.NUMERO_DECIMAL.Equals(Componente.ObtenerCategoria()))
             {
+                Pila.Push(Convert.ToDouble(Componente.ObtenerLexema()));
                 Avanzar();
             }
             else if (Categoria.PARENTESIS_ABRE.Equals(Componente.ObtenerCategoria()))
